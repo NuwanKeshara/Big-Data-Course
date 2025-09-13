@@ -1,0 +1,9 @@
+env: local
+data_path: 'local_data/application_record.csv'
+credit_data_path: 'local_data/credit_record.csv'
+output_path: 'local_data/output/'
+spark:
+  shuffle_partitions: 200
+  executor_memory: '4g'
+  executor_cores: 2
+  app_name: 'Credit Card Project'

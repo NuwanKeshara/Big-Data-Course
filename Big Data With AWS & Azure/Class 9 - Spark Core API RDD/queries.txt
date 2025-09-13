@@ -1,0 +1,12 @@
+then it should slow the system as well because number of executers handling just 1mb of data collectively. driver is also maintaing this details
+
+
+earlier you said rdds are immutable
+
+Is Spark not intelligent enough to know how many partitions it needs. Is it the best practice to specify partitions?
+
+One doubt - IF we have 5 GB file. We do create only 1 partition, Is this possible to create 1 partition or it will create no of partitions based on available block size ?
+
+
+When we read data from HDFS , the data is already stored in block in different Data Nodes. So when we use Spark to read the data, since the data is already partitioned we don't need to further partition right? I joined a bit late so not sure whether you covered this. Also when use lower level API like filter map reduce , do we need to convert the data in to list , I meant each row  then apply the filter map and reduce operations?
+

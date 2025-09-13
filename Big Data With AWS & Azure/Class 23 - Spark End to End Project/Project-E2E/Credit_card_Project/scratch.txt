@@ -1,0 +1,92 @@
+# This is an example of complex one, we will not be using it as then you will not be able 
+# do it yourself then. 
+
+credit_card_approval_project/       # Root directory
+│
+├── config/                         # Configuration files
+│   ├── local_config.json           # Local environment configurations
+│   ├── dataproc_config.json        # Dataproc environment configurations
+│   └── gcp_config.json             # GCP configurations (e.g., GCS, BigQuery)
+│
+├── data/                           # Data storage (local)
+│   ├── raw/                        # Raw data from sources (e.g., CSV, SQL)
+│   ├── processed/                  # Cleaned and processed data
+│   └── analytics/                  # Analytics-ready data
+│
+├── logs/                           # Log files
+│   └── app.log                     # Application logs
+│
+├── notebooks/                      # Jupyter notebooks for exploration
+│   ├── data_exploration.ipynb      # Exploratory Data Analysis (EDA)
+│   └── model_experiments.ipynb     # Model experimentation
+│
+├── src/                            # Source code (modular structure)
+│   ├── __init__.py                 # Marks this as a Python package
+│   ├── data_ingestion/             # Module 1: Data ingestion
+│   │   ├── __init__.py
+│   │   ├── gcs_ingestion.py        # Load data from GCS
+│   │   ├── sql_ingestion.py        # Load data from SQL Server
+│   │   └── utils.py                # Utility functions for ingestion
+│   ├── data_cleaning/              # Module 2: Data cleaning
+│   │   ├── __init__.py
+│   │   ├── cleaning.py             # Clean and preprocess data
+│   │   └── validation.py          # Validate cleaned data
+│   ├── data_integration/           # Module 3: Data integration
+│   │   ├── __init__.py
+│   │   ├── integration.py          # Join and aggregate data
+│   │   └── feature_engineering.py  # Feature engineering
+│   ├── performance_optimization/   # Module 4: Performance optimization
+│   │   ├── __init__.py
+│   │   ├── caching.py              # Caching strategies
+│   │   ├── partitioning.py         # Data partitioning
+│   │   └── join_optimization.py    # Optimize joins
+│   ├── data_serving/               # Module 5: Data serving
+│   │   ├── __init__.py
+│   │   ├── bigquery_export.py      # Export data to BigQuery
+│   │   ├── hdfs_export.py          # Export data to Hadoop HDFS
+│   │   └── visualization.py        # Visualize data (e.g., using Matplotlib/Seaborn)
+│   ├── utils/                      # Shared utilities
+│   │   ├── __init__.py
+│   │   ├── spark_session.py        # Spark session creation
+│   │   ├── logger.py               # Logging configuration
+│   │   └── config_loader.py        # Load configurations
+│   └── main.py                     # Entry point for the application
+│
+├── tests/                          # Unit tests
+│   ├── __init__.py
+│   ├── test_data_ingestion.py
+│   ├── test_data_cleaning.py
+│   └── test_data_integration.py
+│
+├── Pipfile                         # Pipenv dependencies
+├── Pipfile.lock                    # Locked dependencies
+├── README.md                       # Project documentation
+└── requirements.txt                # Conda environment dependencies
+
+
+
+
+# The one we are following
+
+credit_card_approval_project/
+│── configs/                  # YAML configuration files
+│   ├── config_local.yaml      # Local execution config
+│   ├── config_dataproc.yaml   # Dataproc execution config
+│── logs/                      # Log files
+│   ├── spark_app.log
+│── src/                       # Source code
+│   ├── main.py                # Pipeline entry point
+│   ├── data_ingestion.py       # Reads data from CSV/GCS/SQL
+│   ├── data_cleaning.py        # Handles missing values & transformations
+│   ├── data_integration.py     # Merges datasets & prepares ML features
+│   ├── optimization_serving.py # Optimizes & stores final data
+│   ├── logger.py               # Centralized logging
+│── tests/                      # Unit tests for each module
+│── requirements.txt            # Dependencies
+│── setup.py                    # Project setup file
+│── run_spark_local.sh          # Shell script to run locally
+│── run_spark_dataproc.sh       # Shell script to run on Dataproc
+│── README.md                   # Project documentation
+
+
+anytime you create a env, check it with which pip and which python

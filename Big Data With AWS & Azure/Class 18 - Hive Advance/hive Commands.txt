@@ -1,0 +1,85 @@
+set hive.enforce.bucketing = true;
+
+
+
+
+
+
+
+create table customer_bucketed (
+
+  customer_id INT,
+
+  name STRING,
+
+  city STRING,
+
+  state STRING,
+
+  country STRING,
+
+  registration_date STRING,
+
+  is_active BOOLEAN
+
+)
+
+clustered by (customer_id) into 10 buckets
+
+row format delimited
+
+fields terminated by ','
+
+stored as textfile;
+
+
+
+
+
+
+
+ create external table customer_external (
+
+ customer_id INT,
+
+ name STRING,
+
+ city STRING,
+
+ state STRING,
+
+ country STRING,
+
+ registration_date STRING,
+
+ is_active BOOLEAN
+
+ )
+
+ ROW FORMAT DELIMITED
+
+ FIELDS TERMINATED By ','
+
+ STORED AS TEXTFILE
+
+ LOCATION '/data2/';
+
+ 
+
+ 
+
+ insert overwrite table customer_bucketed
+
+ select * from customer_external;
+
+ 
+
+ 
+
+ 
+
+ j1 = customer.join(broadcast(orders),'customer_id','left').join(payments
+
+ 
+
+j2 =  customer.join(broadcast(orders),'customer_id','left')

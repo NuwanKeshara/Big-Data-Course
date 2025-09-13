@@ -1,0 +1,11 @@
+prefix=/Users/admin/Movies/Project-E2E/Credit_card_Project/myenv
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+toolexeclibdir=${libdir}
+includedir=/Users/admin/Movies/Project-E2E/Credit_card_Project/myenv/include
+
+Name: libffi
+Description: Library supporting Foreign Function Interfaces
+Version: 3.4.4
+Libs: -L${toolexeclibdir} -lffi
+Cflags: -I${includedir}

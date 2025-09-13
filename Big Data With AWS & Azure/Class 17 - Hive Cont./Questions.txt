@@ -1,0 +1,24 @@
+Priya - please answer - how to resolve - getting error - yarnscheduler initial job has not accepted any resources check your cluster ui
+
+
+
+
+I was asked in an interview today if reduceByKey is same as GroupByKey + aggregate function
+
+
+
+
+one question - In the interview today, i was judged by one leetcode question and they decided not to proceed coz "they have decided to not continue based on coding not being as strong as they prefer"
+
+
+
+
+hive-site.xml
+
+
+
+
+
+
+
+managed tables me metadata is stored in hive metastore that is I was talking about 

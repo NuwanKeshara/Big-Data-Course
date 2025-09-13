@@ -1,0 +1,47 @@
+Can we say lazy caching = eager_caching+unpersist in first call itself
+
+spark.sql will cache only in memory ryt ?same like RDD
+Suppose we have 10 partitions and our memory has only space to accommodate only 5 nah it will cache only 5 ryt? 
+
+spill the next 5 to disk 
+
+won't be efficient for large data set ryt Mayank bcz it will put pressure on our memory
+
+
+what do you mean by caching refers to analyzed plan? does it mean query on cached table refers to this plan and then optimized plan?
+
+How to find unused cache?
+
+maybe he is referring to LRU type caching and check head/tail of doubly linked list based on implementation
+
+
+
+
+== Parsed Logical Plan ==
+'Project ['customer_id, 'city]
++- Filter (city#2 = Mumbai)
+   +- Relation [customer_id#0,name#1,city#2,registration_date#3,is_active#4] csv
+
+== Analyzed Logical Plan ==
+customer_id: int, city: string
+Project [customer_id#0, city#2]
++- Filter (city#2 = Mumbai)
+   +- Relation [customer_id#0,name#1,city#2,registration_date#3,is_active#4] csv
+   
+   
+== Parsed Logical Plan ==
+'Filter ('city = Mumbai)
++- Project [customer_id#0, city#2]
+   +- Relation [customer_id#0,name#1,city#2,registration_date#3,is_active#4] csv
+
+== Analyzed Logical Plan ==
+customer_id: int, city: string
+Filter (city#2 = Mumbai)
++- Project [customer_id#0, city#2]
+   +- Relation [customer_id#0,name#1,city#2,registration_date#3,is_active#4] csvz
+   
+   
+   
+So Mayank if we re not storing the cache in a variable then we always need make sure to match the "query plan matching" to hit the cache else it won't hit the cache.
+But when we stored the cache in a variable we can use the variable so it will always hit the cache.. hope my understanding it crct ?
+   

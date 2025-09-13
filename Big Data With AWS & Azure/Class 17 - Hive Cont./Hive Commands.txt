@@ -1,0 +1,187 @@
+> hive --version
+
+> vi /etc/hive/conf/hive-site.xml
+
+
+
+All hive and beeline commands should end with ;
+
+
+> !connect jdbc:hive2://localhost:10000 ( to start beeline connected to your Hive Server )
+ Beeline we quit using !q
+ 
+ hive using exit;
+ 
+ 
+ 
+ set hive.execution.engine
+ 
+ set hive.execution.engine = mr
+ 
+ 
+ 
+ create table customer (
+ customer_id INT,
+ name STRING,
+ city STRING,
+ state STRING,
+ country STRING,
+ registration_date STRING,
+ is_active BOOLEAN
+ )
+ ROW FORMAT DELIMITED
+ FIELDS TERMINATED By ','
+ STORED AS TEXTFILE;
+ 
+ 
+ load data inpath '/tmp/customers_100.csv' into table customer;
+ 
+ 
+ Location:  | hdfs://my-cluster-m/user/hive/warehouse/ecommerce.db/customer 
+
+
+ 
+sudo systemctl stop mysql
+sudo mysqld_safe --skip-grant-tables &
+mysql -u root
+
+use database metastore
+table is TBLS
+
+
+
+
+----------------
+
+
+
+
+ create table customer_managed (
+ customer_id INT,
+ name STRING,
+ city STRING,
+ state STRING,
+ country STRING,
+ registration_date STRING,
+ is_active BOOLEAN
+ )
+ ROW FORMAT DELIMITED
+ FIELDS TERMINATED By ','
+ STORED AS TEXTFILE;
+ 
+ 
+ load data inpath '/tmp/cust_managed.csv' into table customer_managed;
+ 
+ 
+ 
+ what is ext_man.db
+ 
+ 
+ create external table customer_external (
+ customer_id INT,
+ name STRING,
+ city STRING,
+ state STRING,
+ country STRING,
+ registration_date STRING,
+ is_active BOOLEAN
+ )
+ ROW FORMAT DELIMITED
+ FIELDS TERMINATED By ','
+ STORED AS TEXTFILE
+ LOCATION '/external_data';
+ 
+ 
+INSERT INTO customers_managed (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+
+In both external and managed table schema and metadata is stored in hive metastore provided hive support is enabled, only difference is that in external table data is residing in external storage/Hadoop and in managed both data and meta deta is managed by spark/hive
+
+
+
+ create table customer_partition (
+ customer_id INT,
+ name STRING,
+ city STRING,
+ state STRING,
+ country STRING,
+ registration_date STRING,
+ is_active BOOLEAN
+ )
+ PARTITIONED BY (city STRING)
+ ROW FORMAT DELIMITED
+ FIELDS TERMINATED By ','
+ STORED AS TEXTFILE;
+ 
+ 
+ 
+ 
+CREATE TABLE customers_partitioned_2 (
+    customer_id INT,
+    name STRING,
+    city STRING,
+    registration_date DATE,
+    is_active BOOLEAN
+)
+PARTITIONED BY (country STRING, state STRING)  -- Partition columns
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE;
+
+
+INSERT INTO TABLE customers_partitioned PARTITION (state='Maharashtra')
+VALUES (0, 'Customer_0', 'Pune', '2023-06-29', FALSE);
+
+
+INSERT INTO TABLE customers_partitioned PARTITION (state='Tamil Nadu')
+VALUES (1, 'Customer_1', 'Chennai', '2023-12-07', TRUE);
+
+
+They could create partitions like:
+AGE 
+
+1 ---------- 60 
+
+
+
+customers_under_20: Customers aged 0 to 19.  ------> 1
+customers_20_to_39: Customers aged 20 to 39. -------> 2
+customers_40_to_59: Customers aged 40 to 59. --------> 3
+customers_60_plus: Customers aged 60 and above. -------> 4
+
+If I want to get the data from Nov'24 to Feb'25 for Mumbai. How will it work?
+
+
+
+INSERT INTO TABLE customers_partitioned_2 PARTITION (country='USA', state='Gujarat')
+VALUES (2, 'Customer_2', 'CA', '2023-10-27', TRUE);
+
+
+
+
+SHOW PARTITIONS customers_partitioned_2;
+
+
+SET hive.exec.dynamic.partition=true;
+SET hive.exec.dynamic.partition.mode=nonstrict;
+
+
+
+ create table customer_external_partitioned (
+ customer_id INT,
+ name STRING,
+ state STRING,
+ country STRING,
+ registration_date STRING
+ )
+ PARTITIONED BY (city STRING, is_active BOOLEAN)
+ ROW FORMAT DELIMITED
+ FIELDS TERMINATED By ','
+ STORED AS TEXTFILE;
+ 
+ 
+ 
+ 
+ INSERT INTO TABLE customer_external_partitioned PARTITION (city,is_active)
+ SELECT * from customer_external;

@@ -1,0 +1,5 @@
+pyspark==3.2.4
+dotenv
+mysql-connector
+pandas
+pyyaml

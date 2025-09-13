@@ -1,0 +1,19 @@
+Hi Mayank - few doubts  yesterday i couldn't ask due to poor network. Please clearify 
+
+1) Is databricks provide only software solution over any clound infra eg: AWS, GCP ?
+
+2) Suppose We have already devloped a pipeline on AWS using AWS Glue or AWS Sagemaker. Now if we want to change using databricks So do we need to change/optimise in code as well or plateform will optimise the it self backend things ? 
+
+- Connecting to S3 
+
+3) Is Snowflake is similar databricks or any diffrence ?
+
+4) Please do take a one session on Snowflake as well as well.
+
+
+if we are good at sql snowflake would be easy to learn?
+
+
+Mayank ,Any situation where hive edges compare  to spark or spark.sql.  &
+Hive is part of the Hadoop ecosystem, originally designed to run on HDFS with MapReduce(abstraction).
+Then Databricks does not use HDFS, but how it can still connect to Hive.

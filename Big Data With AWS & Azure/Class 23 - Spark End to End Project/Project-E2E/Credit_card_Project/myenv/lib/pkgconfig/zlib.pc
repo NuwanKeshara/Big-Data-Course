@@ -1,0 +1,13 @@
+prefix=/Users/admin/Movies/Project-E2E/Credit_card_Project/myenv
+exec_prefix=/Users/admin/Movies/Project-E2E/Credit_card_Project/myenv
+libdir=/Users/admin/Movies/Project-E2E/Credit_card_Project/myenv/lib
+sharedlibdir=/Users/admin/Movies/Project-E2E/Credit_card_Project/myenv/lib
+includedir=/Users/admin/Movies/Project-E2E/Credit_card_Project/myenv/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

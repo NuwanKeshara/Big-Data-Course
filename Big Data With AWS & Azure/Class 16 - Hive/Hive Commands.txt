@@ -1,0 +1,49 @@
+> hive --version
+
+> vi /etc/hive/conf/hive-site.xml
+
+
+
+All hive and beeline commands should end with ;
+
+
+> !connect jdbc:hive2://localhost:10000 ( to start beeline connected to your Hive Server )
+ Beeline we quit using !q
+ 
+ hive using exit;
+ 
+ 
+ 
+ set hive.execution.engine
+ 
+ set hive.execution.engine = mr
+ 
+ 
+ 
+ create table customer (
+ customer_id INT,
+ name STRING,
+ city STRING,
+ state STRING,
+ country STRING,
+ registration_date STRING,
+ is_active BOOLEAN
+ )
+ ROW FORMAT DELIMITED
+ FIELDS TERMINATED By ','
+ STORED AS TEXTFILE;
+ 
+ 
+ load data inpath '/tmp/customers_100.csv' into table customer;
+ 
+ 
+ Location:  | hdfs://my-cluster-m/user/hive/warehouse/ecommerce.db/customer 
+
+
+ 
+sudo systemctl stop mysql
+sudo mysqld_safe --skip-grant-tables &
+mysql -u root
+
+use database metastore
+table is TBLS

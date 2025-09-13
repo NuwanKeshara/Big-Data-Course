@@ -1,0 +1,5 @@
+2025-03-22 11:29:17,145 - src.logger - INFO - Logger created
+2025-03-22 11:31:30,543 - src.logger - INFO - Logger created
+2025-03-22 11:34:04,958 - src.logger - INFO - Spark session created
+2025-03-22 11:35:02,916 - src.logger - INFO - Spark session created
+2025-03-22 11:35:22,855 - src.logger - INFO - Data loaded successfully

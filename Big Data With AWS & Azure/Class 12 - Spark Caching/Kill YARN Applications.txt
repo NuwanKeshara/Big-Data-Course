@@ -1,0 +1,7 @@
+yarn application -list
+
+yarn application -kill <app_id>
+
+for app in $(yarn application -list | awk '{print $1}' | grep application_); do
+    yarn application -kill $app
+done
